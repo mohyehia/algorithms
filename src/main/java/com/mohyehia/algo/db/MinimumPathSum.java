@@ -52,4 +52,14 @@ public class MinimumPathSum {
         return mem[r][c] = grid[r][c] + Math.min(minPathWithMemoization(r , c + 1, grid),
                 minPathWithMemoization(r + 1, c, grid));
     }
+
+    static int minPathRec(int r, int c, int[][] grid){
+        if(r >= grid.length || c >= grid.length) return Integer.MAX_VALUE;
+        if(r == grid.length - 1 || c == grid.length - 1) return grid[r][c];
+
+        int rightPath = minPathRec(r, c + 1, grid);
+        int downPath = minPathRec(r + 1, c, grid);
+
+        return grid[r][c] + Math.min(rightPath, downPath);
+    }
 }
