@@ -69,4 +69,21 @@ public class NumberOfOnesInBinaryRepresentation {
          */
         return 32 - count;
     }
+    /*
+    Hamming Distance
+    The Hamming distance between two integers is the number of
+     positions at which the corresponding bits are different.
+     Given two integers x and y, calculate the Hamming distance
+     hamming distance between 2 integers is number of ones in their xor
+     ex (1 ^ 4) = 5 and number of ones in 5 is 2
+     */
+    static int hammingDistance(int x, int y) {
+        int n = x ^ y;
+        int count = 0;
+        while(n > 0){
+            n &= (n - 1);
+            count++;
+        }
+        return count;
+    }
 }
