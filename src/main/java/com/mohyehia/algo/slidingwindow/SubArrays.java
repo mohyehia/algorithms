@@ -50,4 +50,20 @@ public class SubArrays {
         }
         return ans;
     }
+
+    /*
+    Given an array consisting of n integers, find the contiguous subarray of given length k
+     that has the maximum average value. And you need to output the maximum average value.
+     */
+    static double findMaxAverage(int[] a, int k){
+        int sum = 0;
+        for(int i = 0; i < k; i++) sum += a[i];
+        int max = sum;
+        for(int i = k; i < a.length; i++){
+            sum -= a[i - k];
+            sum += a[i];
+            max = Math.max(max, sum);
+        }
+        return max * 1.0 / k;
+    }
 }
