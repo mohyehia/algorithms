@@ -7,16 +7,22 @@ package com.mohyehia.algo.bits;
  */
 public class ReverseBits {
     public static void main(String[] args) {
-        System.out.println(reverseBits(10));
+        int n = 123456;
+        System.out.println(Integer.reverse(n));
+        System.out.println(reverseBits(n));
     }
+    /*
+    Time complexity => O(1)
+    Space complexity => O(1)
+     */
     static int reverseBits(int n) {
         int ans = 0;
-        while(n > 0){
-            // left shift ans by one
+        for(int i = 0; i < 32; i++){
+            // left shift answer to add the new bit whether it's 1 or 0
             ans <<= 1;
-            // if first bit of n is one then, xor it with ans
-            if((n & 1) == 1) ans ^= 1;
-            // right shift n by one to get rid of the current bit
+            // add 1 if the MSB is 1, else add 0
+            if((n & 1) != 0) ans++;
+            // right shift n to get the next bit
             n >>= 1;
         }
         return ans;
