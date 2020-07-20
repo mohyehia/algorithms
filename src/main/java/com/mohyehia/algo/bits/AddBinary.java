@@ -26,11 +26,11 @@ public class AddBinary {
         int i = a.length() - 1, j = b.length() - 1;
         int bitA, bitB, sum, carry = 0;
         while(Math.max(i, j) >= 0){
-            bitA = i >= 0 ? Character.getNumericValue(a.charAt(i--)) : 0;
+            bitA = i >= 0 ? a.charAt(i--) - '0' : 0;
             bitB = j >= 0 ? Character.getNumericValue(b.charAt(j--)) : 0;
             sum = bitA ^ bitB ^ carry;
             sb.append(sum);
-            carry = (bitA & bitB) | (bitB & carry) | (bitA & carry);
+            carry = (bitA & bitB) | (bitA & carry) | (bitB & carry);
         }
         if (carry == 1) sb.append(1);
         return sb.reverse().toString();
