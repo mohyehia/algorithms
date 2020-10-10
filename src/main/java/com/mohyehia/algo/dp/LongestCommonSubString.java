@@ -1,4 +1,4 @@
-package com.mohyehia.algo.db;
+package com.mohyehia.algo.dp;
 
 public class LongestCommonSubString {
     public static void main(String[] args) {

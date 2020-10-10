@@ -1,4 +1,4 @@
-package com.mohyehia.algo.db;
+package com.mohyehia.algo.dp;
 
 import java.util.Arrays;
 
