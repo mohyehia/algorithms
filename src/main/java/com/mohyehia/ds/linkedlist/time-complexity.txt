@@ -1,0 +1,6 @@
+Search = O(N)
+Insert-at-head = O(1)
+Insert-at-tail = O(1)
+Remove-head = O(1)
+Remove-tail = O(N)
+Remove-random-element = O(N)
