@@ -1,3 +1,5 @@
+Singly LinkedList
+______________________
 Search = O(N)
 Insert-at-head = O(1)
 Insert-at-tail = O(1)
