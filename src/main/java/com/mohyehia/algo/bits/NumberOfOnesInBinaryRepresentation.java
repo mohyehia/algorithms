@@ -41,6 +41,7 @@ public class NumberOfOnesInBinaryRepresentation {
      n = 20 = 10100 & n - 1 = 19 = 10011 & count = 2
      n = 16 = 10000 & n - 1 = 15 = 01111 & count = 3
      n = 0 & count = 4 & loop terminated
+     this solution works only for positive numbers
      */
     static int countBitSet(int num){
         int cnt = 0;
@@ -53,12 +54,13 @@ public class NumberOfOnesInBinaryRepresentation {
 
     /*
     if n is 32 bit signed integer, it's represented by 2's complement
-    so the leftmost bit (sign bit) is 1 and we will subtract itr from number
+    so the leftmost bit (sign bit) is 1 and we will subtract it from number
+    this solution works only for negative numbers
      */
-    static int countBitSetForUnsigned(int num){
+    static int countUnsignedBitSet(int num){
         int count = 0;
         if(num < 0)
-            num = num * -1 - 1; // the last one is the sign bit
+            num = num * -1 - 1; // convert the number to positive & remove the last bit as it is the sign bit
         while(num > 0){
             num = num & (num - 1);
             count++;
