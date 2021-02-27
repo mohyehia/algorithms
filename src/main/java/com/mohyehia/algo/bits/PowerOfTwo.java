@@ -8,14 +8,16 @@ package com.mohyehia.algo.bits;
 public class PowerOfTwo {
     public static void main(String[] args) {
         System.out.println(isPowerOfTwoUsingModule(8));
-        System.out.println(isPowerOfTwo(8));
+        System.out.println(isPowerOfTwoUsingModule(16));
+        System.out.println(isPowerOfTwo(64));
+        System.out.println(isPowerOfTwo(128));
     }
     /*
     the known function to check if number is power of two
     Time complexity => O(Log(N))
      */
     static boolean isPowerOfTwoUsingModule(int n){
-        if(n == 0) return false;
+        if(n <= 0) return false;
         while(n % 2 == 0) n /= 2;
         return n == 1;
     }
@@ -32,7 +34,7 @@ public class PowerOfTwo {
     Time complexity => O(1)
      */
     static boolean isPowerOfTwo(int n){
-        return (n != 0) &&
+        return (n > 0) &&
                 ((n & (n - 1)) == 0);
     }
 }
