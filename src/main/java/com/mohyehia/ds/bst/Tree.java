@@ -120,7 +120,7 @@ public class Tree {
     }
     private void preOrder(Node root) {
         if(root != null){
-            System.out.println(root.left);
+            System.out.println(root.val);
             preOrder(root.left);
             preOrder(root.right);
         }
