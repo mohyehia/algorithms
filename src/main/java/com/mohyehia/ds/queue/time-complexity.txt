@@ -1,0 +1,6 @@
+Queue
+______________________
+enqueue = O(1)
+Peek = O(1)
+dequeue = O(1)
+Search = O(N)
