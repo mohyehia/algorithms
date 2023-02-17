@@ -1,5 +1,0 @@
-PriorityQueue
-______________________
-push, poll => O(log n)
-remove(val), contains(val) => O(n)
-peek => O(1)
