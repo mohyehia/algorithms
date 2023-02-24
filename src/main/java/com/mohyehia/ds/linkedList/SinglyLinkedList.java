@@ -1,4 +1,4 @@
-package com.mohyehia.ds;
+package com.mohyehia.ds.linkedList;
 
 public class SinglyLinkedList {
     static class Node {
