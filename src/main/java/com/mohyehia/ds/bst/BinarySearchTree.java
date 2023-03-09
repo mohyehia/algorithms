@@ -2,6 +2,7 @@ package com.mohyehia.ds.bst;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class BinarySearchTree {
     Node root;
@@ -77,11 +78,39 @@ public class BinarySearchTree {
         }
     }
 
+    void iterativePreOrder(Node root) {
+        if (root == null) return;
+        Stack<Node> st = new Stack<>();
+        st.push(root);
+        while (!st.isEmpty()) {
+            Node temp = st.pop();
+            System.out.println(temp.val);
+            if (temp.right != null) st.push(temp.right);
+            if (temp.left != null) st.push(temp.left);
+        }
+    }
+
     void inOrder(Node root) {
         if (root != null) {
             inOrder(root.left);
             System.out.println(root.val);
             inOrder(root.right);
+        }
+    }
+
+    void iterativeInOrder(Node root) {
+        if (root == null) return;
+        Stack<Node> st = new Stack<>();
+        Node curr = root;
+        while (!st.isEmpty() || curr != null) {
+            if (curr != null) {
+                st.push(curr);
+                curr = curr.left;
+            } else {
+                curr = st.pop();
+                System.out.println(curr.val);
+                curr = curr.right;
+            }
         }
     }
 
@@ -91,6 +120,20 @@ public class BinarySearchTree {
             postOrder(root.right);
             System.out.println(root.val);
         }
+    }
+
+    void iterativePostOrder(Node root) {
+        if (root == null) return;
+        Stack<Node> in = new Stack<>();
+        Stack<Integer> out = new Stack<>();
+        in.push(root);
+        while (!in.isEmpty()) {
+            Node temp = in.pop();
+            out.push(temp.val);
+            if (temp.left != null) in.push(temp.left);
+            if (temp.right != null) in.push(temp.right);
+        }
+        while (!out.isEmpty()) System.out.println(out.pop());
     }
 
     Node remove(int val) {
