@@ -1,8 +1,5 @@
 package com.mohyehia.algo.bits;
 
-import java.sql.Time;
-import java.util.Arrays;
-
 /**
  * Created by Mohamed.Yehia
  * Date: 4/11/2020
@@ -13,22 +10,23 @@ public class NumberOfOnesInBinaryRepresentation {
 //        String s = Integer.toBinaryString(35);
         String s = decimalToBinary(35);
         System.out.println("Binary representation is " + s);
+        System.out.println("Binary representation is " + decimalToBinaryUsingBits(35));
         int count = 0;
-        for(char c : s.toCharArray())
-            if(c == '1') count++;
+        for (char c : s.toCharArray())
+            if (c == '1') count++;
         System.out.println(count);
         System.out.println(countBitSet(35));
     }
 
-    static String decimalToBinary(int num){
+    static String decimalToBinary(int num) {
         int[] binary = new int[40];
         int index = 0;
-        while(num > 0){
+        while (num > 0) {
             binary[index++] = num % 2;
             num /= 2;
         }
         StringBuilder sb = new StringBuilder();
-        for(int i = index - 1; i >= 0; i--)
+        for (int i = index - 1; i >= 0; i--)
             sb.append(binary[i]);
         return sb.toString();
     }
@@ -43,9 +41,9 @@ public class NumberOfOnesInBinaryRepresentation {
      n = 0 & count = 4 & loop terminated
      this solution works only for positive numbers
      */
-    static int countBitSet(int num){
+    static int countBitSet(int num) {
         int cnt = 0;
-        while(num > 0){
+        while (num > 0) {
             num = num & (num - 1);
             cnt++;
         }
@@ -57,11 +55,11 @@ public class NumberOfOnesInBinaryRepresentation {
     so the leftmost bit (sign bit) is 1 and we will subtract it from number
     this solution works only for negative numbers
      */
-    static int countUnsignedBitSet(int num){
+    static int countUnsignedBitSet(int num) {
         int count = 0;
-        if(num < 0)
+        if (num < 0)
             num = num * -1 - 1; // convert the number to positive & remove the last bit as it is the sign bit
-        while(num > 0){
+        while (num > 0) {
             num = num & (num - 1);
             count++;
         }
@@ -71,6 +69,7 @@ public class NumberOfOnesInBinaryRepresentation {
          */
         return 32 - count;
     }
+
     /*
     Hamming Distance
     The Hamming distance between two integers is the number of
@@ -82,7 +81,7 @@ public class NumberOfOnesInBinaryRepresentation {
     static int hammingDistance(int x, int y) {
         int n = x ^ y;
         int count = 0;
-        while(n > 0){
+        while (n > 0) {
             n &= (n - 1);
             count++;
         }
@@ -93,11 +92,21 @@ public class NumberOfOnesInBinaryRepresentation {
     Another solution for counting the number of 1's in binary representation of number
     Works for positive & negative number
      */
-    static int anotherCountBitSet(int n){
+    static int anotherCountBitSet(int n) {
         int cnt = 0;
-        for(int i = 0; i < 32; i++){
-            if((n & 1) != 0) cnt++;
+        for (int i = 0; i < 32; i++) {
+            if ((n & 1) != 0) cnt++;
         }
         return cnt;
+    }
+
+    static String decimalToBinaryUsingBits(int num) {
+        StringBuilder ans = new StringBuilder();
+        while (num > 0) {
+            int bit = num & 1;
+            num >>= 1;
+            ans.append(bit);
+        }
+        return ans.reverse().toString();
     }
 }
